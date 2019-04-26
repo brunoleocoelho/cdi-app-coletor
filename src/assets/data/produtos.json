@@ -1,0 +1,52 @@
+{
+    "PRODUTOS": [
+        {
+            "COD": "100-100-001",
+            "DESC": "PRODUTO A"
+        },
+        {
+            "COD": "100-100-002",
+            "DESC": "PRODUTO B"
+        },
+        {
+            "COD": "100-100-003",
+            "DESC": "PRODUTO C"
+        },
+        {
+            "COD": "100-200-001",
+            "DESC": "PRODUTO J"
+        },
+        {
+            "COD": "100-200-002",
+            "DESC": "PRODUTO K"
+        },
+        {
+            "COD": "100-200-003",
+            "DESC": "PRODUTO L"
+        },
+        {
+            "COD": "200-100-001",
+            "DESC": "PRODUTO D"
+        },
+        {
+            "COD": "200-100-002",
+            "DESC": "PRODUTO E"
+        },
+        {
+            "COD": "200-100-003",
+            "DESC": "PRODUTO F"
+        },
+        {
+            "COD": "200-200-001",
+            "DESC": "PRODUTO G"
+        },
+        {
+            "COD": "200-200-002",
+            "DESC": "PRODUTO H"
+        },
+        {
+            "COD": "200-200-003",
+            "DESC": "PRODUTO I"
+        }
+    ]
+}

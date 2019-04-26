@@ -1,0 +1,14 @@
+page-login {
+    @media (min-width: 576px) {
+        .forBigScreen{
+            width: 50%;
+            margin: auto;
+        }
+    }
+    @media (min-width: 768px) {
+        .forBigScreen{
+            width: 40%;
+            margin: auto;
+        }
+    }
+}

@@ -1,0 +1,141 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+/** SPLASH SCREEN CUSTOMIZADA APIA */
+.splash{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    background-image: url('../assets/imgs/splash-apia.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: auto 100%;
+}
+
+/** EFEITOS P/ CUBOS DANÇANTES*/
+.spinnerCube {
+    margin: 100px auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    bottom: 10%;
+  }
+  
+  .cube1, .cube2 {
+    // background-color: #488aff;
+    background-color: #152d55;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+    animation: sk-cubemove 1.8s infinite ease-in-out;
+  }
+  
+  .cube2 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+  }
+  
+  @-webkit-keyframes sk-cubemove {
+    25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
+    50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
+    75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
+    100% { -webkit-transform: rotate(-360deg) }
+  }
+  
+  @keyframes sk-cubemove {
+    25% { 
+      transform: translateX(42px) rotate(-90deg) scale(0.5);
+      -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+    } 50% { 
+      transform: translateX(42px) translateY(42px) rotate(-179deg);
+      -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+    } 50.1% { 
+      transform: translateX(42px) translateY(42px) rotate(-180deg);
+      -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+    } 75% { 
+      transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+      -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    } 100% { 
+      transform: rotate(-360deg);
+      -webkit-transform: rotate(-360deg);
+    }
+  }
+
+/** EFEITOS P/ BARRAS VERTICAIS */
+// .spinnerBars {
+//     margin: 100px auto;
+//     width: 50px;
+//     height: 40px;
+//     text-align: center;
+//     font-size: 10px;
+//   }
+  
+//   .spinner > div {
+//     background-color: #488aff;
+//     height: 100%;
+//     width: 6px;
+//     display: inline-block;
+    
+//     -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+//     animation: sk-stretchdelay 1.2s infinite ease-in-out;
+//   }
+  
+//   .spinner .rect2 {
+//     -webkit-animation-delay: -1.1s;
+//     animation-delay: -1.1s;
+//   }
+  
+//   .spinner .rect3 {
+//     -webkit-animation-delay: -1.0s;
+//     animation-delay: -1.0s;
+//   }
+  
+//   .spinner .rect4 {
+//     -webkit-animation-delay: -0.9s;
+//     animation-delay: -0.9s;
+//   }
+  
+//   .spinner .rect5 {
+//     -webkit-animation-delay: -0.8s;
+//     animation-delay: -0.8s;
+//   }
+  
+//   @-webkit-keyframes sk-stretchdelay {
+//     0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+//     20% { -webkit-transform: scaleY(1.0) }
+//   }
+  
+//   @keyframes sk-stretchdelay {
+//     0%, 40%, 100% { 
+//       transform: scaleY(0.4);
+//       -webkit-transform: scaleY(0.4);
+//     }  20% { 
+//       transform: scaleY(1.0);
+//       -webkit-transform: scaleY(1.0);
+//     }
+//   }

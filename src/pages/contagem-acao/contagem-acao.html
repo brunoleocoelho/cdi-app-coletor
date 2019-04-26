@@ -1,0 +1,74 @@
+<!--
+  Generated template for the ContagemAcaoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="tresefe1">
+        <ion-title>Contagem Em Processo</ion-title>
+    </ion-navbar>
+    <div color="light" padding>
+        <ion-buttons end>
+            <button ion-button style="float:right;font-size:x-small;" color="light" (click)="seeList()">Ver Lista</button>
+        </ion-buttons>
+        <h3> <span *ngIf="contagem.CCUSTO != ''">{{contagem.CCUSTO}}-{{contagem.CCDESC}}</span></h3>
+        <h4>
+            <span *ngIf="contagem.LOCAL != ''">Local:{{contagem.LOCAL}}, </span>
+            <span *ngIf="contagem.CONT != ''">Cont:#{{contagem.CONT}},</span>
+            <span [ngSwitch]="contagem.TPCONT">
+                <span *ngSwitchCase="1">Por Produto</span>
+                <span *ngSwitchCase="2">Por OP</span>
+                <span *ngSwitchDefault>Por ZAMAC(OP)</span>
+            </span>
+        </h4>
+    </div>
+</ion-header>
+
+<ion-content padding>
+    <!-- LISTA DE PRODUTOS CONTADOS -->
+    <div *ngIf="verLista">
+        <ng-template [ngIf]="contagem.ITENS.length > 0" [ngIfElse]="SemItens" style="margin-top:50px">
+            <ion-list>
+                <ion-item *ngFor="let item of contagem.ITENS; let i = index;" [ngStyle]="{'background-color': (i%2 == 0) ? 'lightgray': 'white'}">
+                    <!-- Quantidade ou icone check -->
+                    <div *ngIf="item.QUANT > 0" style="float:right;">
+                        <ng-template [ngIf]="contagem.CONT == '1' || contagem.CONT == '2'" [ngIfElse]="Icone">
+                            <span item-end>{{item.QUANT}}</span>
+                        </ng-template>
+                        <ng-template #Icone>
+                            <span item-end>
+                                <ion-icon name="checkmark-circle" color="secondary"></ion-icon>
+                            </span>
+                        </ng-template>
+                    </div>
+
+                    <ng-template [ngIf]="contagem.TPCONT == '1'" [ngIfElse]="PorOPouZamac">
+                        <h2>{{item.PRODUTO}}-{{item.DESCRICAO | slice:0:16 }}</h2>
+                    </ng-template>
+                    <ng-template #PorOPouZamac>
+                        <h2>{{item.OP}}-{{item.DESCRICAO | slice:0:16 }}</h2>
+                    </ng-template>
+
+
+                </ion-item>
+            </ion-list>
+        </ng-template>
+
+        <ng-template #SemItens>
+            <div color="light" style="height: 100%;color: lightgray;justify-content: center;display: flex;align-items: center;">
+                <h4>Itens contados aparecerão aqui</h4>
+            </div>
+        </ng-template>
+    </div>
+
+</ion-content>
+
+<!-- RODAPE -->
+<ion-footer>
+    <ion-toolbar text-center>
+        <!-- <button ion-button color="danger" (click)="sairContagem('Encerrar')">Encerrar</button> -->
+        <button ion-button color="sick3f" (click)="sairContagem('Suspender')">VOLTAR</button>
+        <button ion-button color="secondary" (click)="exibirModalLeitura()">CONTAR</button>
+    </ion-toolbar>
+</ion-footer>

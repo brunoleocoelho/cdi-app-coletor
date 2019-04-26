@@ -1,0 +1,159 @@
+{
+    "CONTAGENS": [
+        {
+            "CCUSTO": "16101",
+            "LOCAL": "01",
+            "CONT": "1",
+            "OP": "",
+            "STATUS":"2",
+            "EQUIPE": [
+                "JOAO COSTA",
+                "JOSE RUBEN",
+                "MARIA SILVA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "16101",
+            "LOCAL": "01",
+            "CONT": "2",
+            "OP": "",
+            "STATUS":"1",
+            "EQUIPE": [
+                "JOAO COSTA",
+                "JOSE RUBEN",
+                "MARIA SILVA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "16102",
+            "LOCAL": "05",
+            "CONT": "1",
+            "OP": "102030",
+            "STATUS":"1",
+            "EQUIPE": [
+                "TEREZA MARTINS",
+                "JOAO SILVA",
+                "MONICA SILVEIRA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "16102",
+            "LOCAL": "05",
+            "CONT": "2",
+            "OP": "102030",
+            "STATUS":"1",
+            "EQUIPE": [
+                "TEREZA MARTINS",
+                "JOAO SILVA",
+                "MONICA SILVEIRA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "12102",
+            "LOCAL": "05",
+            "CONT": "1",
+            "OP": "102080",
+            "STATUS":"1",
+            "EQUIPE": [
+                "TEREZA MARTINS",
+                "JOAO SILVA",
+                "MONICA SILVEIRA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "12102",
+            "LOCAL": "05",
+            "CONT": "2",
+            "OP": "102070",
+            "STATUS":"1",
+            "EQUIPE": [
+                "TEREZA MARTINS",
+                "JOAO SILVA",
+                "MONICA SILVEIRA"
+            ],
+            "ITENS": []
+        },{
+            "CCUSTO": "16301",
+            "LOCAL": "02",
+            "CONT": "1",
+            "OP": "",
+            "STATUS":"1",
+            "EQUIPE": [
+                "JOAO COSTA",
+                "JOSE RUBEN",
+                "MARIA SILVA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "16301",
+            "LOCAL": "02",
+            "CONT": "2",
+            "OP": "",
+            "STATUS":"1",
+            "EQUIPE": [
+                "JOAO COSTA",
+                "JOSE RUBEN",
+                "MARIA SILVA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "16302",
+            "LOCAL": "05",
+            "CONT": "1",
+            "OP": "102040",
+            "STATUS":"1",
+            "EQUIPE": [
+                "TEREZA MARTINS",
+                "JOAO SILVA",
+                "MONICA SILVEIRA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "16302",
+            "LOCAL": "05",
+            "CONT": "2",
+            "OP": "102040",
+            "STATUS":"1",
+            "EQUIPE": [
+                "TEREZA MARTINS",
+                "JOAO SILVA",
+                "MONICA SILVEIRA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "13101",
+            "LOCAL": "03",
+            "CONT": "1",
+            "OP": "102090",
+            "STATUS":"1",
+            "EQUIPE": [
+                "TEREZA MARTINS",
+                "JOAO SILVA",
+                "MONICA SILVEIRA"
+            ],
+            "ITENS": []
+        },
+        {
+            "CCUSTO": "13101",
+            "LOCAL": "03",
+            "CONT": "2",
+            "OP": "102090",
+            "STATUS":"1",
+            "EQUIPE": [
+                "JOAO COSTA",
+                "JOSE RUBEN",
+                "MARIA SILVA"
+            ],
+            "ITENS": []
+        }
+    ]
+}

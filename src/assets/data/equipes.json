@@ -1,0 +1,37 @@
+{
+    "EQUIPES":[
+        {
+            "NUM": "1",
+            "INTEGRANTES":[
+                "JOAO COSTA",
+                "JOSE RUBEN",
+                "MARIA SILVA"
+            ]
+        },
+        {
+            "NUM": "2",
+            "INTEGRANTES":[
+                "MARCOS ANDRADE",
+                "MATEUS SOLANO",
+                "RUTE OLIVEIRA"
+            ]
+        },
+        {
+            "NUM": "3",
+            "INTEGRANTES": [
+                "TEREZA MARTINS",
+                "JOAO SILVA",
+                "MONICA SILVEIRA"
+            ]
+        },
+        {
+            "NUM": "4",
+            "INTEGRANTES": [
+                "MARCO ANTONIO SILVA",
+                "PEDRO DA COSTA",
+                "ROBERTO VILAR"
+            ]
+        }
+
+    ]
+}

@@ -1,0 +1,80 @@
+<!--
+  Generated template for the ContagemListaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="tresefe1">
+        <ion-title>Inventário {{ano}}</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="logOut()">
+                <ion-icon name="power" style="color:white"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <div color="light" style="padding-left: 10px;">
+        <p><b>Integrante: </b>{{usuario.NOME}}</p>
+        <p><b>Matricula: </b>{{usuario.MATRICULA}}</p>
+    </div>
+</ion-header>
+
+<ion-content padding>
+        <h3 text-center full>Contagens em aberto</h3>
+
+    <ng-template [ngIf]="contagens.length > 0" [ngIfElse]="mensagemLista" style="margin-top:50px">
+        <ion-list radio-group>
+            <ion-item *ngFor="let item of contagens">
+                <ion-label>
+                    <!-- <ion-avatar item-start>
+                        <img src="img/avatar-finn.png">
+                    </ion-avatar> -->
+                    <h2><b>{{item.CCUSTO}}-{{item.CCDESC}}</b></h2>
+                    <h2>Local: <b>{{item.LOCAL}}</b>, Nº.Cont: <b>{{item.CONT}}</b></h2>
+                    <h3>Tipo Cont.:
+                        <span [ngSwitch]="item.TPCONT">
+                            <span *ngSwitchCase="1" style="font-weight: bold">Por Produto</span>
+                            <span *ngSwitchCase="2" style="font-weight: bold">Por OP</span>
+                            <span *ngSwitchDefault style="font-weight: bold">Por ZAMAC(OP)</span>
+                        </span>
+                    </h3>
+
+                    <h3>Status:
+                        <span [ngSwitch]="item.STATUS" style="font-weight:bold">
+                            <span *ngSwitchCase="1" style="color:green;">LIBERADO</span>
+                            <span *ngSwitchCase="2" style="color:blue;">EM PROCESSO</span>
+                            <span *ngSwitchCase="3" style="color:gray;">SUSPENSO</span>
+                            <span *ngSwitchCase="9" style="color:red;">ENCERRADO</span>
+                            <span *ngSwitchDefault style="color:yellow;">BLOQUEADO</span>
+                        </span>
+                    </h3>
+
+                    <h3>Equipe: </h3>
+                    <p text-wrap>
+                        <span *ngFor="let pessoa of item.EQUIPE; let i = index" [attr.data-index]="i" >
+                            {{pessoa.NOME | slice:0:15}}
+                            <span *ngIf="i != (item.EQUIPE.length -1)">, </span>
+                        </span>
+                    </p>
+
+                </ion-label>
+                <ion-radio (ionSelect)="checkContagem(item)"></ion-radio>
+            </ion-item>
+        </ion-list>
+    </ng-template>
+
+    <ng-template #mensagemLista>
+        <div color="light" style="height:100%; color:lightgray; justify-content:center; display:flex; align-items:center;">
+            <h4>Não há contagens a serem feitas</h4>
+        </div>
+    </ng-template>
+
+</ion-content>
+
+<!-- RODAPE -->
+<ion-footer>
+    <ion-toolbar text-center>
+        <button ion-button color="secondary" (click)="showAlertConfirma()" [disabled]="contagem == null">Abrir e Entrar</button>
+    </ion-toolbar>
+</ion-footer>
