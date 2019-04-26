@@ -1,10 +1,10 @@
 /**
- * @name UserHendHeld
+ * @name UserHandHeld
  * @description
  * Classe que representa os dados de um integrante de Equipe de inventario
  * ou usuario do aplicativo
  */
-export class UserHendHeld {
+export class UserHandHeld {
 
     id: string
     usrName: string
