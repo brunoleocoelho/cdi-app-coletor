@@ -10,6 +10,7 @@ import { Keyboard } from "@ionic-native/keyboard";
 import { HeaderColor } from '@ionic-native/header-color';
 import { Network } from "@ionic-native/network";
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from "@ionic/storage";
 
 import { MyApp } from './app.component';
 
@@ -35,6 +36,7 @@ import { ServiceStorageProvider } from '../providers/service-storage/service-sto
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp,{ navExitApp: false }),
+    IonicStorageModule.forRoot(),
     HttpClientModule
   ],
   bootstrap: [IonicApp],

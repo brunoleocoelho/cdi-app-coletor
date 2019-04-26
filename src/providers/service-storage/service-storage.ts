@@ -1,37 +1,40 @@
 import { Injectable } from "@angular/core";
 import { Res } from '../../app/app.constants';
-import { UserHendHeld } from "../../models/UserHendHeld";
+import { UserHandHeld } from "../../models/UserHandHeld";
+import { Storage } from "@ionic/storage";
 
 @Injectable()
 export class ServiceStorageProvider {
 
-    constructor( ) {
+    constructor(private storage: Storage ) {
     }
 
     /** Armazena o usuario localmente no app, */
-    public saveUserLocal(usr: UserHendHeld) {
-        window.localStorage.setItem('usuario', JSON.stringify(usr))
+    public saveUserLocal(usr: UserHandHeld) {
+        return this.storage.set('usuario', JSON.stringify(usr))
     }
 
     /** Armazena o credentials localmente no app pronto para Basic Auth */
     public saveCredentials(usr, pwd) {
         let credentials = btoa(`${usr}:${pwd}`)
-        window.localStorage.setItem('credentials', credentials)
+        return this.storage.set('credentials', credentials)
     }
 
     /** Retorna as as informações do usuário logado armazenadas no app */
     public getUserLocal(){
-        return <UserHendHeld> JSON.parse(window.localStorage.getItem('usuario'))
+        return this.storage.get('usuario')
+            .then( value => <UserHandHeld> JSON.parse(value) )
+            .catch( err => err )   
     }
 
     /** Retorna as credentials do usuário logado pronto para Basic Auth */
     public getCredentials(){
-        return window.localStorage.getItem('credentials')
+        return this.storage.get('credentials')
     }
 
     /** Remove os dados armazenados localmente */
     public removeLocalData(){
-        window.localStorage.clear();
+        return this.storage.clear();
     }
     
 
