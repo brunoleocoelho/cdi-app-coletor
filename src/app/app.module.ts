@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { NativeStorage } from "@ionic-native/native-storage";
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ScreenOrientation } from "@ionic-native/screen-orientation";
 import { BackgroundMode } from '@ionic-native/background-mode';
@@ -52,7 +51,6 @@ import { ServiceStorageProvider } from '../providers/service-storage/service-sto
     StatusBar,
     SplashScreen,
     HttpClientModule,
-    NativeStorage,
     BarcodeScanner,
     ScreenOrientation,
     BackgroundMode,
@@ -61,7 +59,6 @@ import { ServiceStorageProvider } from '../providers/service-storage/service-sto
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Network,
     NetworkServiceProvider,
-    NativeStorage,
     ServiceApiProvider,
     ServiceStorageProvider
   ]
