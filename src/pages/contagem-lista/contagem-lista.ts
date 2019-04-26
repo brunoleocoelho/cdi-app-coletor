@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, Loading, LoadingC
 import { Contagem } from '../../models/Contagem';
 import { ServiceApiProvider } from '../../providers/service-api/service-api';
 import { BackgroundMode } from '@ionic-native/background-mode';
-import { UserHendHeld } from '../../models/UserHendHeld';
+import { UserHandHeld } from '../../models/UserHandHeld';
 import { ContagemAcaoPage } from '../contagem-acao/contagem-acao';
 import { LoginPage } from '../login/login';
 
@@ -22,7 +22,7 @@ export class ContagemListaPage {
     private ano: string = '2018';
     private contagens: Array<Contagem> = new Array<Contagem>();     //Todas as contagens
     private contagem: Contagem = null;                              //contagem selecionada
-    private usuario: UserHendHeld;
+    private usuario: UserHandHeld;
     private loader: Loading
 
     constructor(

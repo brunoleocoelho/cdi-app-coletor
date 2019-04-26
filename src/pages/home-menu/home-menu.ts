@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LeituraConferenciaPage } from '../leitura-conferencia/leitura-conferencia';
 import { ServiceStorageProvider } from '../../providers/service-storage/service-storage';
-import { UserHendHeld } from '../../models/UserHendHeld';
+import { UserHandHeld } from '../../models/UserHandHeld';
 import { LoginPage } from '../login/login';
 
 /**
@@ -16,7 +16,7 @@ import { LoginPage } from '../login/login';
 })
 export class HomeMenuPage {
   private menu: any[];
-  private usuario: UserHendHeld;
+  private usuario: UserHandHeld = new UserHandHeld();
 
   constructor(
     public navCtrl: NavController,
@@ -25,9 +25,13 @@ export class HomeMenuPage {
     private alertCtrl: AlertController
   ) {
     this.menu = menus;
-    this.usuario = storage.getUserLocal();
+    this.storage.getUserLocal()
+      .then( 
+        data => {
+          this.usuario = data
+      })
   }
-
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeMenuPage');
   }
@@ -51,8 +55,9 @@ export class HomeMenuPage {
         { 
           text: 'LOGOFF',
           handler: () => {
-            this.storage.removeLocalData();
-            this.navCtrl.setRoot(LoginPage);
+            this.storage.removeLocalData()
+            .then( () => this.navCtrl.setRoot(LoginPage) )
+            .catch( err => console.log('Local Data NOT REMOVED', err) );
           }
         }
       ]

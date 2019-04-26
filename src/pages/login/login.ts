@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { ServiceApiProvider } from '../../providers/service-api/service-api';
-import { UserHendHeld } from '../../models/UserHendHeld';
+import { UserHandHeld } from '../../models/UserHandHeld';
 import { HomeMenuPage } from '../home-menu/home-menu';
 import { ServiceStorageProvider } from '../../providers/service-storage/service-storage';
 
@@ -17,7 +17,7 @@ import { ServiceStorageProvider } from '../../providers/service-storage/service-
     templateUrl: 'login.html',
 })
 export class LoginPage {
-    usuario: UserHendHeld;
+    usuario: UserHandHeld;
     private title: string;
     private loader: Loading;
     private user: string;
@@ -75,9 +75,10 @@ export class LoginPage {
 
             this.usuario = userFake;
             this.usuario.usrName = this.user;
-            this.storage.saveUserLocal(this.usuario)
-
-            this.navCtrl.setRoot(HomeMenuPage)
+            this.storage.saveUserLocal(this.usuario).then(
+                () => this.navCtrl.setRoot(HomeMenuPage)
+            )
+            .catch( err => console.log('LoginPage.saveUserLocal.err', err) )
 
             // this.loader.present();
 
@@ -118,7 +119,7 @@ export class LoginPage {
         if (dados.status == 'OK') {
 
             if (dados.usuario && dados.usuario != null) {
-                this.usuario = <UserHendHeld> dados.usuario;
+                this.usuario = <UserHandHeld> dados.usuario;
 
                 this.storage.saveUserLocal(this.usuario);
 
@@ -157,7 +158,7 @@ export class LoginPage {
 
 
 /** User Fake para testes */
-const userFake = <UserHendHeld> {
+const userFake = <UserHandHeld> {
     bloqueio: false,
     cargo: 'Conferidor',
     depto: 'Expedição',

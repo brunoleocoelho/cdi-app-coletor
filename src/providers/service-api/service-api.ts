@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Res } from '../../app/app.constants';
-import { UserHendHeld } from '../../models/UserHendHeld';
+import { UserHandHeld } from '../../models/UserHandHeld';
 import { Contagem, ItemContado } from '../../models/Contagem';
 import { ServiceStorageProvider } from '../service-storage/service-storage';
 
@@ -22,7 +22,17 @@ export class ServiceApiProvider {
     ) {
         console.log('Hello ServiceApiProvider Provider');
         this.url = Res.Urls.HOST;
-        this.authHeader = new HttpHeaders().set('Authorization', 'Basic ' + this.storage.getCredentials());
+        this.setAuthHeader();
+    }
+    
+    /** Define a variavel de controle de autenticação para o REST Protheus */
+    setAuthHeader(){
+        this.storage.getCredentials().then( 
+            data => {
+                const auth = data;
+                this.authHeader = new HttpHeaders().set('Authorization', 'Basic ' + data);
+            }
+        )
     }
 
     /** Fazendo o login de usuário PROTHEUS com HTTP GET */
