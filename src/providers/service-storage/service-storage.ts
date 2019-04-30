@@ -3,6 +3,9 @@ import { Res } from '../../app/app.constants';
 import { UserHandHeld } from "../../models/UserHandHeld";
 import { Storage } from "@ionic/storage";
 
+/**
+ * Serviço para armazenamento de dados localmente no device
+ */
 @Injectable()
 export class ServiceStorageProvider {
 

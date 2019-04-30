@@ -1,6 +1,6 @@
 /** 
- * Conjunto de Constantes para uso no App 
- * Repositoriio de Projeto: https://gitlab.com/brunoleocoelho/app-inventario-3f
+ * Conjunto de Constantes para uso no App.
+ * Repositorio de Projeto: https://gitlab.com/brunoleocoelho/cdi-app-coletor
  */
 export const Res = {
     
@@ -28,37 +28,30 @@ export const Res = {
          */
         LOGIN_USUARIO: "/LoginUser/",
 
-        //PRODUTOS
-        /** Retorna informações de produto de SB1 pelo centro custo (cc) e codigo produto (codProd) recebido na URL
-         * - Ex.: PRODUTO_SB1 + cc=16101&codProd=PI821E01ZAT 
+        /** Para abrir a conferência de uma Ordem de Separação
+         * Numero da O.S. deve ser passado no final da URL.
+         * * Ex: HTTP POST /OrdemSeparacao/abreconf/102030
          */
-        PRODUTO_SB1: "/Produtos?tabela=SB1&", 
-        
-        /** Retorna informações de produto de SC2 pelo centro custo (cc) e op (op) recebida na URL
-         * - Ex.: PRODUTO_SC2 + cc=16101&op=465084
-         */
-        PRODUTO_SC2: "/Produtos?tabela=SC2&",   
-    
-        //CONTAGEM
-        /** Retorna uma lista de Contagens referentes as equipes da pertencente Matricula recebida via URL
-         * - Ex.: CONTAGEM_GET_LISTA + Matricula 
-         */
-        CONTAGEM_GET_LISTA: '/Contagem/Lista/', 
-        
-        /** Inclui item contado conforme conforme C.Custo, Local, Num.Contagem recebidos na URL
-         * - Ex.: CONTAGEM_POST_INCLUI + cCusto/Local/NumCont. 
-         */
-        CONTAGEM_POST_INCLUI: '/Contagem/Inclui/',
+        ORDSEP_POST_ABRECONF: "/OrdemSeparacao/abreconf/",
 
-        /** Altera STATUS de uma contagem conforme C.Custo, Local, Num.Contagem recebidos na URL
-         * - Ex.: CONTAGEM_PUT_ALTERA + cCusto/Local/NumCont 
+        /** Para buscar informação do produto, conforme código passado no fim da URL.
+         * * Ex: HTTP GET /OrdemSeparacao/produto/100-200-300
          */
-        CONTAGEM_PUT_ALTERA: '/Contagem/Altera/', 
+        ORDSEP_GET_PRODUTO: "/OrdemSeparacao/produto/",
 
-        /** Suspende uma contagem (Status=3) conforme C.Custo, Local, Num.Contagem recebidos na URL
-         * - Ex.: CONTAGEM_PUT_SUSPENDE + cCusto/Local/NumCont 
+        /** Para postar item conferido. 
+         * Numero da O.S. deve ser passada no fim da URL, e produto no Body Http.
+         * * Ex: HTTP POST /OrdemSeparacao/encerra/102030
+         * *    HTTP BODY { produto: produto }
          */
-        CONTAGEM_PUT_SUSPENDE: '/Contagem/Suspende/', 
+        ORDSEP_POST_CONFERENCIA: "/OrdemSeparacao/conferencia/",
+        
+        /** Para encerramento da conferencia.
+         * Código da O.S. deve ser passado no fim da URL.
+         * * Ex: HTTP POST /OrdemSeparacao/encerra/102030
+         */
+        ORDSEP_POST_ENCERRA: "/OrdemSeparacao/encerra/",
+
 
     }
 }

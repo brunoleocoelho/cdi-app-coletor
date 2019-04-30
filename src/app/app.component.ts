@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { BackgroundMode } from "@ionic-native/background-mode";
 import { NetworkServiceProvider } from '../providers/network-service/network-service';
-import { HomeMenuPage } from '../pages/home-menu/home-menu';
 import { LoginPage } from '../pages/login/login';
 
 @Component({

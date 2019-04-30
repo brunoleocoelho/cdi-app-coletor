@@ -1,8 +1,7 @@
 /**
  * @name UserHandHeld
  * @description
- * Classe que representa os dados de um integrante de Equipe de inventario
- * ou usuario do aplicativo
+ * Classe que representa um usuario do app coletor de dados
  */
 export class UserHandHeld {
 
