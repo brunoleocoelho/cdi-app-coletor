@@ -6,11 +6,13 @@
 -->
 <ion-header>
 
-    <ion-navbar color="tresefe1">
-        <ion-title>Contagem de Produto</ion-title>
+    <ion-navbar color="cdiFirst">
+        <ion-title>Conferencia</ion-title>
         <span></span>
     </ion-navbar>
-
+    <div color="light" style="padding-left: 10px; font-size: x-large; text-align: center; color: black ">
+        <p><b>Ord.Separação: </b>{{ ordSep }}</p>
+    </div>
 </ion-header>
 
 
@@ -26,22 +28,13 @@
         </div>
 
         <ion-list>
-            <ng-template [ngIf]="contagem.TPCONT == '1'" [ngIfElse]="PorOPouZamac">
-                <ion-item>
-                        <ion-label color="primary" stacked>Código PRODUTO Lido:</ion-label>
-                        <ion-input style="font-size:x-large" color="light" type="text" [(ngModel)]="produto.CODIGO" [disabled]="true"></ion-input>
-                </ion-item>
-            </ng-template>
-            <ng-template #PorOPouZamac>
-                <ion-item>
-                    <ion-label color="primary" stacked>Código OP Lido:</ion-label>
-                    <ion-input style="font-size:x-large" color="light" type="text" [(ngModel)]="produto.OP" [disabled]="true"></ion-input>
-                    <p color="light">Cód.Produto OP: {{produto.CODIGO}}</p>
-                </ion-item>
-            </ng-template>
+            <ion-item>
+                <ion-label color="primary" stacked>Código PRODUTO Lido:</ion-label>
+                <ion-input style="font-size:x-large" color="light" type="text" [(ngModel)]="produto.CODIGO" [disabled]="true"></ion-input>
+            </ion-item>
 
             <ion-item>
-                <ion-label color="primary" stacked>Descrição Produto</ion-label>
+                <ion-label color="primary" stacked>Descrição</ion-label>
                 <ion-textarea style="font-size: x-large" [(ngModel)]="produto.DESCRICAO" [disabled]="true"></ion-textarea>
             </ion-item>
 
@@ -55,10 +48,8 @@
                 <ion-input #inputQtd style="font-size:xx-large;" type="number" [(ngModel)]="produto.QUANT" [min]="0" placeholder="0" text-center [disabled]="!achouItem"></ion-input>
             </ion-item>
         </ion-list>
+        
     </div>
-    <!-- BOTOES PARA TESTE -->
-    <!-- <button ion-button (click)="checkItemContado(produto.CODIGO)" *ngIf="contagem.TPCONT == '1'">BUSCAR</button>
-    <button ion-button (click)="checkItemContado(produto.OP)" *ngIf="contagem.TPCONT != '1'">BUSCAR</button> -->
 </ion-content>
 
 <!-- RODAPE -->

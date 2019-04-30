@@ -20,19 +20,6 @@ export class Contagem {
 }
 
 /**
- * @name Produto
- * @description Classe que modela um produto
- */
-export class Produto{
-    CODIGO: String;
-    DESCRICAO: String;
-    ATIVO: String;
-    NUMOP: String;
-    STATUSOP: String;
-    UM: String;
-}
-
-/**
  * @name ItemContado
  * @description Representa um item contado que será enviado p/ inventario
  */

@@ -1,0 +1,28 @@
+page-conferencia-acao {
+
+    .main-div-center {
+        height: 100%;
+        color: lightgray;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .subheader {
+        margin: 0px;
+        padding: 8px;
+        background: lightgray;
+    }
+
+    .label-input {
+        font-size:x-large;
+        color:black;
+    }
+
+    .input-os {
+        font-size:xx-large;
+        color:black; 
+        text-align: center;
+        background-color: #c8c8c8;
+    }
+}

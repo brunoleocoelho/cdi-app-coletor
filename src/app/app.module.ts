@@ -19,42 +19,34 @@ import { NetworkServiceProvider } from '../providers/network-service/network-ser
 
 import { LoginPage } from '../pages/login/login';
 import { HomeMenuPage } from '../pages/home-menu/home-menu';
-import { LeituraConferenciaPage } from '../pages/leitura-conferencia/leitura-conferencia';
 import { ServiceStorageProvider } from '../providers/service-storage/service-storage';
-// import { ContagemListaPage } from '../pages/contagem-lista/contagem-lista';
-// import { ContagemAcaoPage } from '../pages/contagem-acao/contagem-acao';
+import { ContagemAcaoPageModule } from '../pages/conferencia-acao/conferencia-acao.module';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     HomeMenuPage,
-    LeituraConferenciaPage,
-    // ContagemListaPage,
-    // ContagemAcaoPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp,{ navExitApp: false }),
     IonicStorageModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ContagemAcaoPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     LoginPage,
     HomeMenuPage,
-    LeituraConferenciaPage,
-    // ContagemListaPage,
-    // ContagemAcaoPage,
-    // LeituraConferenciaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     HttpClientModule,
-    BarcodeScanner,
     ScreenOrientation,
+    BarcodeScanner,
     BackgroundMode,
     Keyboard,
     HeaderColor,

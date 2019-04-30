@@ -4,7 +4,7 @@ import { Contagem } from '../../models/Contagem';
 import { ServiceApiProvider } from '../../providers/service-api/service-api';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { UserHandHeld } from '../../models/UserHandHeld';
-import { ContagemAcaoPage } from '../contagem-acao/contagem-acao';
+// import { ContagemAcaoPage } from '../conferencia-acao/conferencia-acao';
 import { LoginPage } from '../login/login';
 
 /**

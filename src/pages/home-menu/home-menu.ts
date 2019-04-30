@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { LeituraConferenciaPage } from '../leitura-conferencia/leitura-conferencia';
+import { LeituraConferenciaPage } from '../conferencia-acao/leitura-conferencia/leitura-conferencia';
 import { ServiceStorageProvider } from '../../providers/service-storage/service-storage';
 import { UserHandHeld } from '../../models/UserHandHeld';
 import { LoginPage } from '../login/login';
+import { ConferenciaAcaoPage } from '../conferencia-acao/conferencia-acao';
 
 /**
  * Tela que exibe o menu inicial com todas as funções do app.
@@ -26,10 +27,7 @@ export class HomeMenuPage {
   ) {
     this.menu = menus;
     this.storage.getUserLocal()
-      .then( 
-        data => {
-          this.usuario = data
-      })
+      .then( data => this.usuario = data )
   }
   
   ionViewDidLoad() {
@@ -39,14 +37,14 @@ export class HomeMenuPage {
   /** Redireciona para a page correta */
   public openPage(page) {
     // console.log("MenuPage.openPage:", page); //linha teste
-    this.navCtrl.push(page);
+    if(page !== null) this.navCtrl.setRoot(page);
   }
 
   /** Efetua o logoff do app */ //Chamado no HTML
   public logOut() {
     let alert = this.alertCtrl.create({
-      title: 'SAIR?',
-      message: `Será feito logoff do usuário:<br><b> ${this.usuario.nome} </b>`,
+      title: 'DESEJA SAIR?',
+      message: `Será desconectado o usuário:<br><b> ${this.usuario.nome} </b>`,
       buttons: [
         { 
           text: 'Cancelar',
@@ -68,24 +66,74 @@ export class HomeMenuPage {
 }
 
 
-/** Itens a serem exibidos na tela de menu principal */
+/** 
+ * Itens a serem exibidos na tela de menu principal 
+ * * Ex: {
+ *   grupo: 'Incluir',
+ *   componentes: [
+ *     { titulo: 'Cliente', page: ClienteNovoPage, icone: 'podium' }
+ *   ]
+ * }
+*/
 const menus = [
   {
-    titulo: 'Ordens de Separação',
+    grupo: 'Expedição',
+    componentes: [
+      {
+        titulo: 'Separação',
+        page: null,
+        icone: 'add'
+      },
+      {
+        titulo: 'Ordena Almox.',
+        page: null,
+        icone: 'list'
+      },
+      {
+        titulo: 'Conferência',
+        page: ConferenciaAcaoPage,
+        icone: 'checkbox-outline'
+      },
+      {
+        titulo: 'Transferência',
+        page: null,
+        icone: 'redo'
+      },
+    ]
+  },
+  {
+    grupo: 'Recebimento',
     componentes: [
       {
         titulo: 'Conferência',
-        page: LeituraConferenciaPage,
-        icone: 'checkbox-outline'
+        page: null,
+        icone: 'md-checkmark-circle-outline'
       },
-      // { titulo: 'Pedidos de Venda', page: PedidosVendaPage, icone: 'open' },
-      // { titulo: 'Produtos', page: ProdutosPage, icone: 'pricetags' },
+      {
+        titulo: 'Estocagem',
+        page: null,
+        icone: 'logo-buffer'
+      },
+      {
+        titulo: 'Etiquetagem',
+        page: null,
+        icone: 'pricetag'
+      },
     ]
   },
-  // {
-  //   titulo: 'Incluir',
-  //   componentes: [
-  //     { titulo: 'Cliente', page: ClienteNovoPage, icone: 'podium' }
-  //   ]
-  // }
+  {
+    grupo: 'Consultas',
+    componentes: [
+      {
+        titulo: 'Info. Produto',
+        page: null,
+        icone: 'ios-search-outline'
+      },
+      {
+        titulo: 'Etiquetas',
+        page: null,
+        icone: 'pricetag'
+      },
+    ]
+  },
 ];

@@ -1,3 +1,37 @@
 page-home-menu {
 
+    .main-grid {
+        padding: 0
+    }
+
+    .subheader {
+        margin: 0px;
+        padding: 8px;
+        background: lightgray;
+    }
+
+    .grupo-divider {
+        background-image: linear-gradient(lightgray, gray);
+        border-bottom: 3px solid #4b4b4b;
+        padding: 10px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .grupo-texto {
+        text-transform: uppercase;
+        font-size: large;
+        color: black;
+        width: 100%
+    }
+
+    .item-card {
+        width: auto;
+        margin: 0
+    }
+
+    .item-icon {
+        font-size: x-large;
+    }
+
 }

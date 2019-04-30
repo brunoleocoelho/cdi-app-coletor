@@ -14,34 +14,45 @@
             </button>
         </ion-buttons>
     </ion-navbar>
-    <!-- <div color="light" style="padding-left: 10px;">
-        <p><b>Usuário: </b>{{usuario.usrName}}</p>
-        <p><b>Cargo: </b>{{usuario.cargo}}</p>
-    </div> -->
+    <div color="light">
+        <p  class="subheader"><b>Usuário: </b>{{usuario.usrName}}</p>
+        <!-- <p style="margin-bottom:4px;"><b>Cargo: </b>{{usuario.cargo}}</p> -->
+    </div>
 </ion-header>
 
 
-<ion-content >
-    <ion-grid>
+<ion-content style="background-color: ghostwhite" >
+    <ion-grid class="main-grid">
         
-        <ion-row *ngFor="let categ of menu">
-
-            <ion-col col-12>
-                <ion-item color="primary">
-                    <p style="font-weight: bold;">{{ categ.titulo }}</p>
-                </ion-item>
+        <ion-row *ngFor="let categ of menu" style="margin-bottom: 10px;">
+            <!-- Cabeçalho de grupo -->
+            <ion-col col-12 class="grupo-divider">
+                <span class="grupo-texto">{{ categ.grupo }}</span>
             </ion-col>
-
-            <ion-col col-6 col-sm *ngFor="let item of categ.componentes" padding>
-                <ion-card text-center no-margin style="width:auto;" (click)="openPage(item.page)">
-                    <ion-card-header>
+            
+            <!-- Itens do grupo -->
+            <ion-col col-6 col-sm *ngFor="let item of categ.componentes">
+                <ion-card text-center no-margin class="item-card" (click)="openPage(item.page)">
+                    <ion-card-header class="item-icon">
                         <ion-icon name="{{item.icone}}"></ion-icon>
                     </ion-card-header>
                     <ion-card-content>{{ item.titulo }}</ion-card-content>
                 </ion-card>
             </ion-col>
-
         </ion-row>
+
+            
+        <!-- <ion-list *ngFor="let categ of menu">
+            <ion-item-divider class="grupo-divider">
+                <p class="grupo-titulo">{{ categ.grupo }}</p>
+            </ion-item-divider>
+            <button ion-item class="" *ngFor="let item of categ.componentes" (click)="openPage(item.page)">
+                <ion-avatar class="item-icon" item-start>
+                    <ion-icon name="{{item.icone}}"></ion-icon>
+                </ion-avatar>
+                <h2>{{ item.titulo }}</h2>
+            </button>
+        </ion-list> -->
 
     </ion-grid>
 </ion-content>
