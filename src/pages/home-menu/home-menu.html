@@ -7,7 +7,7 @@
 <ion-header>
 
     <ion-navbar color="cdiFirst">
-        <ion-title>Menu {{': '+ usuario.nome }}</ion-title>
+        <ion-title>Menu </ion-title> <!-- {{': '+ usuario.nome }} -->
         <ion-buttons end>
             <button ion-button (click)="logOut()">
                 <ion-icon name="power" style="color:white"></ion-icon>
@@ -24,23 +24,28 @@
 <ion-content style="background-color: ghostwhite" >
     <ion-grid class="main-grid">
         
-        <ion-row *ngFor="let categ of menu" style="margin-bottom: 10px;">
+        <ion-row *ngFor="let categ of menu; let i = index" style="margin-bottom: 10px;">
             <!-- Cabeçalho de grupo -->
-            <ion-col col-12 class="grupo-divider">
+            <ion-col col-12 class="grupo-divider" >
+            <!-- (click)="toggleCategory(i)" [ngClass]="{'section-active': categ.open, 'section': !categ.open}" > -->
+                <ion-icon item-left name="ios-arrow-forward" *ngIf="!categ.open"></ion-icon>
+                <ion-icon item-left name="ios-arrow-down" *ngIf="categ.open"></ion-icon>
                 <span class="grupo-texto">{{ categ.grupo }}</span>
             </ion-col>
             
             <!-- Itens do grupo -->
-            <ion-col col-6 col-sm *ngFor="let item of categ.componentes">
-                <ion-card no-margin class="item-card" (click)="openPage(item.page)">
-                    <button ion-item text-center>
-                        <ion-card-header class="item-icon">
-                            <ion-icon name="{{item.icone}}"></ion-icon>
-                        </ion-card-header>
-                        <ion-card-content>{{ item.titulo }}</ion-card-content>
-                    </button>
-                </ion-card>
-            </ion-col>
+            <!-- <ng-template  [ngIf]="categ.open"> -->
+                <ion-col col-6 col-sm *ngFor="let item of categ.componentes">
+                    <ion-card no-margin class="item-card" (click)="openPage(item.page)" >
+                        <button ion-item text-center>
+                            <ion-card-header class="item-icon">
+                                <ion-icon name="{{item.icone}}"></ion-icon>
+                            </ion-card-header>
+                            <ion-card-content style="padding-bottom:0" >{{ item.titulo }}</ion-card-content>
+                        </button>
+                    </ion-card>
+                </ion-col>
+            <!-- </ng-template> -->
         </ion-row>
 
             

@@ -27,9 +27,9 @@ export class HomeMenuPage {
   ) {
     this.menu = menus;
     this.storage.getUserLocal()
-      .then( data => this.usuario = data )
+      .then(data => this.usuario = data)
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeMenuPage');
   }
@@ -37,7 +37,7 @@ export class HomeMenuPage {
   /** Redireciona para a page correta */
   public openPage(page) {
     // console.log("MenuPage.openPage:", page); //linha teste
-    if(page !== null) this.navCtrl.setRoot(page);
+    if (page !== null) this.navCtrl.setRoot(page);
   }
 
   /** Efetua o logoff do app */ //Chamado no HTML
@@ -46,21 +46,34 @@ export class HomeMenuPage {
       title: 'DESEJA SAIR?',
       message: `Será desconectado o usuário:<br><b> ${this.usuario.nome} </b>`,
       buttons: [
-        { 
+        {
           text: 'Cancelar',
           handler: () => console.log('Cancelou SAIR!')
         },
-        { 
+        {
           text: 'LOGOFF',
           handler: () => {
             this.storage.removeLocalData()
-            .then( () => this.navCtrl.setRoot(LoginPage) )
-            .catch( err => console.log('Local Data NOT REMOVED', err) );
+              .then(() => this.navCtrl.setRoot(LoginPage))
+              .catch(err => console.log('Local Data NOT REMOVED', err));
           }
         }
       ]
     });
     alert.present();
+  }
+
+  /**
+   * Método para exibir/ocultar os itens da categoria de menu
+   * @param idx índice a ser exibido
+   */
+  public toggleCategory(idx) {
+    this.menu.forEach(
+      (element, index) => {
+        element.open = index != idx ? false : true
+      }
+    );
+    this.menu[idx].open = !this.menu[idx].open;
   }
 
 }

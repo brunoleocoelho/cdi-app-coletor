@@ -132,7 +132,7 @@ export class LeituraConferenciaPage {
 
         const titulo = `Deseja encerrar a conferência da O.S. ${this.ordSep}?`;
         const botoes = [
-            { text: 'Cancelar', icon:'undo', role: 'cancel', handler: () => { } },
+            { text: 'Cancelar', icon:'close', role: 'cancel', handler: () => { } },
             { text: 'Não', icon:'thumbs-down', handler: () => this.viewCtrl.dismiss() },
             { text: 'Sim', icon:'thumbs-up', handler: () => this.encerrar() },
         ];

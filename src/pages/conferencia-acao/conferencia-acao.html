@@ -27,7 +27,12 @@
 <ion-footer>
     <ion-toolbar text-center>
         <!-- <button ion-button color="danger" (click)="sairContagem('Encerrar')">Encerrar</button> -->
-        <button ion-button color="cdiSecond" (click)="sairConferencia()">VOLTAR</button>
-        <button ion-button color="secondary" (click)="exibirModalLeitura()" [disabled]="ordSep.length == 0" >ABRIR</button>
+        <button ion-button icon-start color="cdiSecond" (click)="sairConferencia()">
+            <ion-icon name="arrow-round-back"></ion-icon>
+            VOLTAR
+        </button>
+        <button ion-button icon-start color="secondary" (click)="exibirModalLeitura()" [disabled]="ordSep.length == 0">
+            <ion-icon name="ios-folder-open-outline"></ion-icon>
+            ABRIR</button>
     </ion-toolbar>
 </ion-footer>
