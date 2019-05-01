@@ -1,13 +1,13 @@
 {
-  "name": "Inventario 3F (2018)",
-  "short_name": "3F Inventario",
+  "name": "CDI Coletro de Dados",
+  "short_name": "Coletor de dados",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
-    "src": "assets/imgs/logo.png",
+    "src": "assets/icon/icon-cdi-512x512.png",
     "sizes": "512x512",
     "type": "image/png"
   }],
-  "background_color": "#4e8ef7",
-  "theme_color": "#4e8ef7"
+  "background_color": "#004b92",
+  "theme_color": "#004b92"
 }
