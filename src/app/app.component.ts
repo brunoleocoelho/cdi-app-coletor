@@ -8,6 +8,8 @@ import { BackgroundMode } from "@ionic-native/background-mode";
 import { NetworkServiceProvider } from '../providers/network-service/network-service';
 import { LoginPage } from '../pages/login/login';
 
+import { timer } from "rxjs/observable/timer";
+
 @Component({
     templateUrl: 'app.html'
 })
@@ -29,9 +31,12 @@ export class MyApp {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             backgroundMode.enable();
-            splashScreen.hide();
-            statusBar.backgroundColorByHexString('#BB013a70');
+            statusBar.backgroundColorByHexString('#013a70');
+            // statusBar.overlaysWebView(true);
+            // statusBar.styleBlackTranslucent();
             headerColor.tint('#013a70');
+            splashScreen.hide();
+            timer(2000).subscribe( () => this.showSplash = false )
             // window.setTimeout(
             //     () => { this.showSplash = false },
             //     3000

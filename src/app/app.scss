@@ -15,7 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-/** SPLASH SCREEN CUSTOMIZADA APIA */
+/** SPLASH SCREEN CUSTOMIZADA */
 .splash{
     position: absolute;
     width: 100%;
@@ -25,12 +25,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    background-image: url('../assets/imgs/splash-apia.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; 
-    background-size: auto 100%;
+    background: radial-gradient( #58aeff, #004b92); //rgb(217, 255, 0);
+    // background-image: url('../assets/imgs/icon-cdi.png');
+    // background-repeat: no-repeat;
+    // background-attachment: fixed;
+    // background-position: center; 
+    // background-size: auto 100%;
 }
 
 /** EFEITOS P/ CUBOS DANÇANTES*/
@@ -43,8 +43,7 @@
   }
   
   .cube1, .cube2 {
-    // background-color: #488aff;
-    background-color: #152d55;
+    background-color: #fffb00;
     width: 15px;
     height: 15px;
     position: absolute;
