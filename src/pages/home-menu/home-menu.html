@@ -32,11 +32,13 @@
             
             <!-- Itens do grupo -->
             <ion-col col-6 col-sm *ngFor="let item of categ.componentes">
-                <ion-card text-center no-margin class="item-card" (click)="openPage(item.page)">
-                    <ion-card-header class="item-icon">
-                        <ion-icon name="{{item.icone}}"></ion-icon>
-                    </ion-card-header>
-                    <ion-card-content>{{ item.titulo }}</ion-card-content>
+                <ion-card no-margin class="item-card" (click)="openPage(item.page)">
+                    <button ion-item text-center>
+                        <ion-card-header class="item-icon">
+                            <ion-icon name="{{item.icone}}"></ion-icon>
+                        </ion-card-header>
+                        <ion-card-content>{{ item.titulo }}</ion-card-content>
+                    </button>
                 </ion-card>
             </ion-col>
         </ion-row>

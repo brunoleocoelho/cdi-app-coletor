@@ -1,8 +1,8 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, ViewChild } from '@angular/core';
-import { 
-    NavController, NavParams, AlertController, 
-    ViewController, TextInput, Loading, LoadingController, AlertButton 
+import {
+    NavController, NavParams, AlertController, ActionSheetController,
+    ViewController, TextInput, Loading, LoadingController, AlertButton, ActionSheetButton
 } from 'ionic-angular';
 import { BarcodeScanner } from "@ionic-native/barcode-scanner";
 // import { Keyboard } from "@ionic-native/keyboard";
@@ -24,12 +24,13 @@ export class LeituraConferenciaPage {
     private ordSep: string;
     private loader: Loading;
     private achouItem: boolean;
-    
+
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         public viewCtrl: ViewController,
         private alertCtrl: AlertController,
+        private actionSheetCtrl: ActionSheetController,
         private servico: ServiceApiProvider,
         private barcodeScanner: BarcodeScanner,
         // private keyboard: Keyboard,
@@ -47,7 +48,7 @@ export class LeituraConferenciaPage {
     }
 
     /** Limpa os dadoscampos  */
-    private resetFields(){
+    private resetFields() {
         this.produto = new Produto();
         this.achouItem = false;
     }
@@ -60,31 +61,31 @@ export class LeituraConferenciaPage {
             prompt: 'Posicione o leitor no codigo de barras',   //texto exibido na leitura de código de barras
             resultDisplayDuration: 700                          //tempo exibição leitura
         })
-        .then(barcodeData => {
-            // console.log('lerCodigoBarras data', barcodeData);
-            let codigo = barcodeData.text.trim();
-            if (codigo && codigo.length > 0) {
-                this.checkItemContado(codigo);
-            }
-        })
-        .catch(err => {
-            console.log('lerCodigoBarras err', err);
-        });
+            .then(barcodeData => {
+                // console.log('lerCodigoBarras data', barcodeData);
+                let codigo = barcodeData.text.trim();
+                if (codigo && codigo.length > 0) {
+                    this.checkItemContado(codigo);
+                }
+            })
+            .catch(err => {
+                console.log('lerCodigoBarras err', err);
+            });
     }
 
     /** Chama o serviço que verifica se produto está correto */
-    private checkItemContado(item: string){
+    private checkItemContado(item: string) {
         let resp: any;
         this.createLoading('Verificando item');
         this.loader.present();
 
         this.servico.getProdutoInfo(item).subscribe(
-            data => { 
+            data => {
                 // console.log('LeituraConfrencia CheckItemContado OK:', data); //linha teste
                 this.loader.dismiss();
                 this.achouItem = true;
                 resp = data;
-                
+
                 switch (resp.status) {
                     case 'OK':
                         // this.showAlertMessage('GetItemContado', JSON.stringify(dados)); //linha teste
@@ -92,11 +93,11 @@ export class LeituraConferenciaPage {
                         this.produto.DESCRICAO = resp.Produto.DESCRICAO;
                         this.produto.UM = resp.Produto.UM;
                         window.setTimeout(
-                            () => this.inputQtd._jsSetFocus() ,
+                            () => this.inputQtd._jsSetFocus(),
                             700
                         )
                         break;
-                
+
                     case 'ERRO':
                         // let erroTexto = resp.erro.join('<br>')
                         this.showAlertMessage('Algo errado!', resp.erro)
@@ -108,9 +109,9 @@ export class LeituraConferenciaPage {
                 this.loader.dismiss();
                 this.achouItem = false;
                 if (erro.error.errorMessage) {
-                    this.showAlertMessage('ERRO', erro.error.errorMessage );                    
+                    this.showAlertMessage('ERRO', erro.error.errorMessage);
                 } else {
-                    this.showAlertMessage('ERRO', erro.statusText );
+                    this.showAlertMessage('ERRO', erro.statusText);
                 }
             }
         )
@@ -129,13 +130,15 @@ export class LeituraConferenciaPage {
     public voltar() {
         console.log('LeituraConferencia voltar apertado!');
 
+        const titulo = `Deseja encerrar a conferência da O.S. ${this.ordSep}?`;
         const botoes = [
-            { text: 'Cancelar', role: 'cancel', handler: () => {} },
-            { text: 'Não', handler: () => this.viewCtrl.dismiss() },
-            { text: 'Sim', handler: () => this.encerrar() },
-        ]
+            { text: 'Cancelar', icon:'undo', role: 'cancel', handler: () => { } },
+            { text: 'Não', icon:'thumbs-down', handler: () => this.viewCtrl.dismiss() },
+            { text: 'Sim', icon:'thumbs-up', handler: () => this.encerrar() },
+        ];
 
-        this.showAlertMessage('', `Deseja encerrar a conferência da O.S. ${this.ordSep}?`, botoes)
+        //this.showAlertMessage('', titulo, botoes)
+        this.presentActionSheet(titulo, botoes)
     }
 
     /** Confirma o produto contado */
@@ -143,7 +146,7 @@ export class LeituraConferenciaPage {
         if (this.achouItem && this.produto.QUANT > 0) {
             this.createLoading('Postando item');
             this.loader.present();
-            
+
             console.log('LeituraConferencia confirmar', this.produto);
             let resp: any;
 
@@ -155,7 +158,7 @@ export class LeituraConferenciaPage {
                         case 'OK':
                             this.resetFields()
                             break;
-                    
+
                         case 'ERRO':
                             // let erroTexto = resp.erro.join('<br>')
                             this.showAlertMessage('Algo está errado!', resp.erro);
@@ -166,9 +169,9 @@ export class LeituraConferenciaPage {
                     //console.log('LeituraConfrencia CheckItemContado ERRO:', erro);
                     this.loader.dismiss();
                     if (erro.error.errorMessage) {
-                        this.showAlertMessage('ERRO', erro.error.errorMessage );                    
+                        this.showAlertMessage('ERRO', erro.error.errorMessage);
                     } else {
-                        this.showAlertMessage('ERRO', erro.statusText );
+                        this.showAlertMessage('ERRO', erro.statusText);
                     }
                 }
             )
@@ -179,9 +182,9 @@ export class LeituraConferenciaPage {
     }
 
     /** Efetua o encerramento da ordem de separação */
-    private encerrar(){
+    private encerrar() {
         let resp: any;
-        this.createLoading('Encerrando O.S. '+ this.ordSep)
+        this.createLoading('Encerrando O.S. ' + this.ordSep)
         this.loader.present();
 
         this.servico.postEncerrarOrdemSeparacao(this.ordSep).subscribe(
@@ -192,7 +195,7 @@ export class LeituraConferenciaPage {
                     case 'OK':
                         this.viewCtrl.dismiss()
                         break;
-                
+
                     case 'ERRO':
                         // let erroTexto = resp.erro.join('<br>')
                         this.showAlertMessage('Algo errado!', resp.erro);
@@ -203,9 +206,9 @@ export class LeituraConferenciaPage {
                 //console.log('LeituraConfrencia encerrar ERRO:', erro);
                 this.loader.dismiss();
                 if (erro.error.errorMessage) {
-                    this.showAlertMessage('ERRO', erro.error.errorMessage );                    
+                    this.showAlertMessage('ERRO', erro.error.errorMessage);
                 } else {
-                    this.showAlertMessage('ERRO', erro.statusText );
+                    this.showAlertMessage('ERRO', erro.statusText);
                 }
             }
         )
@@ -227,6 +230,16 @@ export class LeituraConferenciaPage {
         });
 
         alert.present();
+    }
+
+
+    /** Exibe um ActionSheet de opções de esolha ao usuário */
+    presentActionSheet(titulo: string, botoes: Array<ActionSheetButton>) {
+        const actionSheet = this.actionSheetCtrl.create({
+            title: titulo, 
+            buttons: botoes
+        });
+        actionSheet.present();
     }
 
 }

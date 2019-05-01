@@ -44,8 +44,8 @@ export class ConferenciaAcaoPage {
         // console.log('ionViewDidLoad ContagemAcaoPage');
     }
     
-    ionViewDidEnter() {
-        // console.log('ionViewDidEnter ContagemAcaoPage');
+    ionViewWillEnter() {
+        // console.log('ionViewWillEnter ContagemAcaoPage');
         this.resetFields()
     }
     
